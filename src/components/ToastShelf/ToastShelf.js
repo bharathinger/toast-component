@@ -6,17 +6,7 @@ import { ToastContext } from "../ToastProvider/ToastProvider";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 function ToastShelf() {
-  const { toasts, resetToasts } = React.useContext(ToastContext);
-  React.useEffect(() => {
-    const handleDismiss = (event) => {
-      if (event.code === "Escape") {
-        resetToasts();
-      }
-    };
-    window.addEventListener("keydown", handleDismiss);
-
-    return () => window.removeEventListener("keydown", handleDismiss);
-  }, [resetToasts]);
+  const { toasts } = React.useContext(ToastContext);
   if (toasts.length === 0) return;
   return (
     <ol
