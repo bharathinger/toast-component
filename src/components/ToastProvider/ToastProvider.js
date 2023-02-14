@@ -5,8 +5,11 @@ export const ToastContext = React.createContext();
 function ToastProvider({ children }) {
 
   const [toasts, setToasts] = React.useState([]);
+  const resetToasts = React.useCallback(() => {
+    setToasts([]);
+  }, [])
   return (
-    <ToastContext.Provider value={{ toasts, setToasts }}>
+    <ToastContext.Provider value={{ toasts, setToasts, resetToasts }}>
       {children}
     </ToastContext.Provider>
   );
